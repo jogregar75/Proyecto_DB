@@ -6,6 +6,7 @@ import ScrollToTopButton from "./components/ScrollToTopButton";
 import FooterSection from "@/components/FooterSection";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import Index from "./pages/Index";
 import AdminLogin from "./pages/AdminLogin";
 import Admin from "./pages/Admin";
@@ -26,7 +27,8 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      {/* <BrowserRouter> */}
+      <HashRouter>
         <ScrollToTop />
         <Navbar />
         <div className="min-h-screen flex flex-col">
@@ -48,7 +50,8 @@ const App = () => (
           <FooterSection />
         </div>
         <ScrollToTopButton />
-      </BrowserRouter>
+      {/* </BrowserRouter> */}
+      </HashRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
