@@ -16,7 +16,7 @@ const FooterSection = () => (
             <span className="font-display text-xl font-bold">U.E. Colegio Los Pirineos Don Bosco</span>
           </div>
           <p className="text-primary-foreground/70 text-sm leading-relaxed">
-            Más de 25 años formando líderes con valores, conocimiento y compromiso social.
+            40 años formando líderes con valores, conocimiento y compromiso social.
           </p>
         </div>
         <div>
