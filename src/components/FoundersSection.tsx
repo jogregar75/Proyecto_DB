@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
-import enzoPhoto from "@/assets/enzo-guariento.png.asset.json";
-import renatoPhoto from "@/assets/renato-marcuzzi.jpg.asset.json";
-import guerrinoPhoto from "@/assets/guerrino-guariento.jpg.asset.json";
+// import enzoPhoto from "@/assets/enzo-guariento.png.asset.json";
+// import renatoPhoto from "@/assets/renato-marcuzzi.jpg.asset.json";
+// import guerrinoPhoto from "@/assets/guerrino-guariento.jpg.asset.json";
+import enzoPhoto from "@/assets/enzo-guariento.png";
+import renatoPhoto from "@/assets/renato-marcuzzi.jpg";
+import guerrinoPhoto from "@/assets/guerrino-guariento.jpg";
 
 type Founder = {
   name: string;
@@ -14,7 +17,7 @@ const founders: Founder[] = [
   {
     name: "Lcdo. Enzo Guariento",
     role: "Fundador",
-    photo: enzoPhoto.url,
+    photo: enzoPhoto,
     bio: [
       "Enzo nació en Italia, en un pueblo pequeño de la campiña italiana llamado Canda, el día 07 de noviembre del año 1938, en medio de un clima mundial muy poco optimista y prometedor. España vivía su guerra civil, Alemania e Italia estaban sometidas a férreas dictaduras y el resto de Europa luchaba por defender la libertad y la democracia ante el poderío bélico del nazismo.",
       "Su primera infancia transcurrió en medio del terror de la Segunda Guerra Mundial. Había hambre y carestía, y sus padres —con un grupo familiar de 13 hermanos— hacían milagros diarios para alimentar a los niños. Terminada la guerra en 1945, en un clima de reconciliación, se forjó en él la conciencia ciudadana que más tarde lo llevaría a asumir la educación como la gran empresa de formar ciudadanos libres y comprometidos.",
@@ -27,7 +30,7 @@ const founders: Founder[] = [
   {
     name: "Sr. Renato Marcuzzi",
     role: "Fundador",
-    photo: renatoPhoto.url,
+    photo: renatoPhoto,
     bio: [
       "Renato Marcuzzi Marcuzzi nació en Italia en el año 1928, en Pielungo, un alejado y muy pequeño pueblo de alta montaña en el norte de Italia. Ese origen humilde y comunitario explica la mentalidad y el actuar de toda su vida: enfoque directo al trabajo, esfuerzo propio, responsabilidad extraordinaria con todos los que le rodeaban, fueran familia o no, en cualquier ámbito social o empresarial.",
       "Tras el final de la Segunda Guerra Mundial, frente a la desolación y la miseria, viajó a Ventimiglia, cerca de Génova, donde aprendió el oficio de albañil y se familiarizó con los materiales de construcción, las técnicas de acabado y el manejo de cuadrillas, desarrollando la destreza y la pasión por levantar obras con sus propias manos.",
@@ -40,7 +43,7 @@ const founders: Founder[] = [
   {
     name: "Lcdo. Guerrino Guariento",
     role: "Fundador",
-    photo: guerrinoPhoto.url,
+    photo: guerrinoPhoto,
     bio: [
       "Nació en un pueblito del norte de Italia, en la Región del Véneto, el día 19 de octubre de 1942, en plena Segunda Guerra Mundial y en un país ocupado por las tropas nazis. Fue el sexto de trece hermanos en una familia humilde de campesinos, donde reinaba la pobreza pero no la miseria, pues el amor, la comprensión, la alegría y las ganas de vivir fueron la roca sobre la que sus padres fundamentaron la educación de sus hijos.",
       "Realizó sus estudios de primaria en su pueblo natal y el «gimnasio clásico» con los Padres Salesianos de Bagnolo, pequeño pueblo cercano a Turín, muy cerca de Chieri, aldea natal de San Juan Bosco, Patrono de la Juventud.",
