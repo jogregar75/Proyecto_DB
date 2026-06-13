@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 // import enzoPhoto from "@/assets/enzo-guariento.png.asset.json";
 // import renatoPhoto from "@/assets/renato-marcuzzi.jpg.asset.json";
 // import guerrinoPhoto from "@/assets/guerrino-guariento.jpg.asset.json";
-import enzoPhoto from "@/assets/enzo-guariento.png";
-import renatoPhoto from "@/assets/renato-marcuzzi.jpg";
-import guerrinoPhoto from "@/assets/guerrino-guariento.jpg";
+import enzoPhoto from "@/assets/fundadores/enzo-guariento.png";
+import renatoPhoto from "@/assets/fundadores/renato-marcuzzi.jpg";
+import guerrinoPhoto from "@/assets/fundadores/guerrino-guariento.jpg";
 
 type Founder = {
   name: string;
@@ -71,7 +71,7 @@ const FoundersSection = () => (
         <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-3">
           Fundadores
         </h1>
-        <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+        <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
           Conoce a quienes con su visión, esfuerzo y vocación hicieron posible la U.E. Colegio Los Pirineos Don Bosco.
         </p>
       </motion.div>

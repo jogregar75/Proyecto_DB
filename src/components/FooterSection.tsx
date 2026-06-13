@@ -31,11 +31,13 @@ const FooterSection = () => (
           <h4 className="font-display font-bold text-lg mb-4">Horarios de atención</h4>
           <h4 className="font-display font-bold text-sm ml-2">Caja - Administración - Evaluación</h4>
           <ul className="space-y-2 text-sm text-primary-foreground/70 mb-4">
-            <li className="ml-4">Lunes a Viernes: 7:15 am - 1:00 pm y 2:45 pm a 5:00 pm</li>
+            <li className="ml-4">Lunes a Viernes de 7:15 am a 1:00 pm y 2:00 pm a 4:00 pm</li>
           </ul>
-          <h4 className="font-display font-bold text-sm ml-2">Departamentos Académicos</h4>
-          <ul className="space-y-2 text-sm text-primary-foreground/70">
-            <li className="ml-4">Lunes a Viernes: 7:00 am - 8:00 am</li>
+          <h4 className="font-display font-bold text-sm ml-2">Coordinaciones Académicas</h4>
+          <ul className="">
+            <li className="ml-4 text-sm"><p className="font-bold" >Inicial:</p><p className="text-sm text-primary-foreground/70 ml-4">Lunes a Viernes de 08:00 am a 12:00 pm</p></li>
+            <li className="ml-4 text-sm"><p className="font-bold" >Primaria:</p><p className="text-sm text-primary-foreground/70 ml-4">Lunes a Viernes de 07:40 am a 12:15 pm</p></li>
+            <li className="ml-4 text-sm"><p className="font-bold" >E.M.G.:</p><p className="text-sm text-primary-foreground/70 ml-4">Lunes a Viernes de 07:40 am a 12:50 pm</p></li>
           </ul>
         </div>
         

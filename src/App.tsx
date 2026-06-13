@@ -30,7 +30,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       {/* <BrowserRouter> */}
-      <HashRouter>
+      <HashRouter  future={{v7_startTransition: true,v7_relativeSplatPath: true}} >
         <ScrollToTop />
         <Navbar />
         <div className="min-h-screen flex flex-col">

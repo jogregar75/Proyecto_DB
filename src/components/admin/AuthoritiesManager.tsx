@@ -62,7 +62,9 @@ const AuthoritiesManager = () => {
   const uploadPhoto = async (id: string): Promise<string | null> => {
     if (!photoFile) return null;
     const ext = photoFile.name.split(".").pop();
-    const path = `${id}/${crypto.randomUUID()}.${ext}`;
+    // const path = `${id}/${crypto.randomUUID()}.${ext}`;
+    const uniqueId = Date.now() + "-" + Math.random().toString(36).substring(2, 9);
+    const path = `${id}/${uniqueId}.${ext}`;
     const { error } = await supabase.storage.from(BUCKET).upload(path, photoFile, { upsert: true });
     if (error) {
       toast({ title: "Error", description: "No se pudo subir la foto.", variant: "destructive" });
