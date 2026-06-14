@@ -2,7 +2,7 @@ import { GraduationCap, MapPin, Phone, Mail } from "lucide-react";
 import LogoCDB from "@/assets/LogoCDB.png"
 
 const FooterSection = () => (
-  <footer id="contacto" className="bg-[#0f4b00] text-primary-foreground py-16">
+  <footer id="contacto" className="bg-[#0f4b00] text-primary-foreground py-4">
     <div className="container mx-auto px-4">
       <div className="grid md:grid-cols-3 gap-12 mb-12">
         <div>
