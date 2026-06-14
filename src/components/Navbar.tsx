@@ -10,6 +10,7 @@ const navLinks = [
     label: "Nosotros",
     submenu: [
       { label: "Institución", href: "/nosotros" },
+      { label: "Organigrama", href: "/nosotros/organigrama" },
       { label: "Autoridades", href: "/nosotros/autoridades" },
       { label: "Fundadores", href: "/nosotros/fundadores" },
     ],

@@ -12,6 +12,7 @@ import AdminLogin from "./pages/AdminLogin";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import Institucion from "./pages/Nosotros";
+import Organigrama from "./pages/Organigrama";
 import Autoridades from "./pages/Autoridades";
 import Fundadores from "./pages/Fundadores";
 import Niveles from "./pages/Niveles";
@@ -38,6 +39,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/nosotros" element={<Institucion />} />
+              <Route path="/nosotros/organigrama" element={<Organigrama />} />
               <Route path="/nosotros/autoridades" element={<Autoridades />} />
               <Route path="/nosotros/fundadores" element={<Fundadores />} />
               <Route path="/niveles" element={<Niveles />} />
