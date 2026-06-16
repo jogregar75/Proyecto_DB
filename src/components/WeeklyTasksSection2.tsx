@@ -130,18 +130,6 @@ const WeeklyTasksSection = ({ filterLevel }: WeeklyTasksSectionProps) => {
     return acc;
   }, {} as Record<string, UnifiedItem[]>);
 
-  const itemsByGrade = weekItems.reduce((acc, item) => {
-    const match = item.title.match(/^(\d+er|\d+do|\d+to)\s+Grado/i);
-
-    const grade = match ? match[0] : "Otros";
-
-    if (!acc[grade]) acc[grade] = [];
-
-    acc[grade].push(item);
-
-    return acc;
-  }, {} as Record<string, UnifiedItem[]>);
-
   const levelLabel = filterLevel ? levelConfig[filterLevel]?.label || filterLevel : null;
 
   return (
@@ -157,8 +145,7 @@ const WeeklyTasksSection = ({ filterLevel }: WeeklyTasksSectionProps) => {
             {levelLabel || "Actividades"}
           </span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-3">
-            {/* Tareas y Actividades Semanales {levelLabel ? `- ${levelLabel}` : ""} */}
-            Tareas y Actividades Semanales
+            Tareas y Actividades Semanales {levelLabel ? `- ${levelLabel}` : ""}
           </h2>
         </motion.div>
 
@@ -210,25 +197,32 @@ const WeeklyTasksSection = ({ filterLevel }: WeeklyTasksSectionProps) => {
             <p className="text-muted-foreground text-sm mt-2">Seleccione otra semana o vuelva más tarde.</p>
           </div>
         ) : (
-          <div className="space-y-4 max-w-6xl mx-auto">
-            {Object.entries(itemsByGrade).map(([grade, gradeItems], i) => {
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {Object.entries(itemsByLevel).map(([level, levelItems], i) => {
+              const config = levelConfig[level];
+              const Icon = config?.icon || BookOpen;
               return (
                 <motion.div
-                  key={grade}
+                  key={level}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15, duration: 0.6 }}
-                  className="bg-card rounded-xl p-4 shadow-sm border border-border"
+                  className="bg-card rounded-xl p-8 shadow-sm border border-border"
                 >
-                  <h3 className="font-display text-2xl font-bold text-accent mb-6 border-b border-border pb-2">
-                    {grade}
-                  </h3>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {gradeItems.map((t) => (
-                      <div key={t.id} className="rounded-lg border border-border bg-background p-4">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-primary-foreground" />
+                    </div>
+                    <h3 className="font-display text-xl font-bold text-foreground">
+                      {config?.label || level}
+                    </h3>
+                  </div>
+                  <ul className="space-y-5">
+                    {levelItems.map((t) => (
+                      <li key={t.id} className="border-l-2 border-accent pl-4">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-sm font-bold text-accent">{t.description}</span>
+                          <span className="text-sm font-bold text-foreground">{t.title}</span>
                           <span className={`text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full ${
                             t.source === "task"
                               ? "bg-primary/10 text-primary"
@@ -237,6 +231,10 @@ const WeeklyTasksSection = ({ filterLevel }: WeeklyTasksSectionProps) => {
                             {t.source === "task" ? "Tarea" : "Actividad"}
                           </span>
                         </div>
+                        {t.description && (
+                          <p className="text-sm text-muted-foreground mt-1">{t.description}</p>
+                        )}
+
                         {t.attachment_url && (
                           <a
                             href={t.attachment_url}
@@ -283,9 +281,9 @@ const WeeklyTasksSection = ({ filterLevel }: WeeklyTasksSectionProps) => {
                             ))}
                           </div>
                         )}
-                      </div>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </motion.div>
               );
             })}

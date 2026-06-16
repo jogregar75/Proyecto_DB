@@ -83,7 +83,8 @@ const WeeklyTasksManager = () => {
     setUploading(true);
     for (const file of selectedFiles) {
       const ext = file.name.split(".").pop();
-      const path = `tasks/${taskId}/${crypto.randomUUID()}.${ext}`;
+      // const path = `tasks/${taskId}/${crypto.randomUUID()}.${ext}`;
+      const path =`tasks/${taskId}/${Date.now()}-${Math.random().toString(36).substring(2, 9)}.${ext}`;
       const { error: uploadError } = await supabase.storage.from("activity-files").upload(path, file);
       if (uploadError) { toast({ title: "Error", description: `No se pudo subir ${file.name}`, variant: "destructive" }); continue; }
       await (supabase as any).from("task_files").insert({
