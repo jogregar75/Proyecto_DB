@@ -66,7 +66,7 @@ const FoundersSection = () => (
         className="text-center mb-16"
       >
         <span className="text-accent font-semibold uppercase tracking-widest text-sm">
-          Nuestra historia
+          Nuestros Orígenes
         </span>
         <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-3">
           Fundadores

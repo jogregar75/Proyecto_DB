@@ -26,7 +26,7 @@ const AboutSection = () => (
         viewport={{ once: true }}
         className="text-center mb-16"
       >
-        <span className="text-accent font-semibold uppercase tracking-widest text-lg">Sobre Nosotros</span>
+        <span className="text-accent font-semibold uppercase tracking-widest text-lg">Quiénes Somos</span>
         <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-3">
           Nuestra Identidad Institucional
         </h2>

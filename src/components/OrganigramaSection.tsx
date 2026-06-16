@@ -30,10 +30,10 @@ const OrganigramaSection = () => {
           className="text-center mb-12"
         >
           <span className="text-accent font-semibold uppercase tracking-widest text-sm">
-            Organización
+            Nuestra Organización
           </span>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-3">
-            Organigrama
+            Organigrama Institucional
           </h1>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
             Estructura organizativa de la U.E. Colegio Los Pirineos Don Bosco.

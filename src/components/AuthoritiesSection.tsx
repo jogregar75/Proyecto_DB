@@ -55,10 +55,10 @@ const AuthoritiesSection = () => {
           className="text-center mb-16"
         >
           <span className="text-accent font-semibold uppercase tracking-widest text-sm">
-            Nuestro equipo
+            Nuestro Equipo
           </span>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-3">
-            Autoridades
+            Autoridades Institucionales
           </h1>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
             Conoce al equipo directivo y de coordinación que guía la formación de nuestros estudiantes.
