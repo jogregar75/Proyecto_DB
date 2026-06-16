@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Instagram, GraduationCap } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import LogoCDB from "@/assets/LogoCDB.png";
+
+const INSTAGRAM_URL = "https://www.instagram.com/colegio.donbosco/?hl=es-la";
+const ARCADAT_URL = "https://uedonbosco.com/#about";
 
 const navLinks = [
   { label: "Inicio", href: "/" },
@@ -104,7 +107,7 @@ const Navbar = () => {
             </li>
           ))}
         </ul> */}
-
+      
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <li key={link.label} className="relative group">
@@ -145,6 +148,31 @@ const Navbar = () => {
           ))}
         </ul>
 
+        {/* SOCIAL ICONS EN EL MEMBRETE */}
+        <div className="hidden md:flex items-center gap-5 ml-8">
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            title="Instagram"
+            className="text-white/80 hover:text-accent transition-colors"
+          >
+            <Instagram className="w-6 h-6" />
+          </a>
+          <a
+            href={ARCADAT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Arcadat"
+            title="Arcadat"
+            className="flex items-center gap-1 text-white/80 hover:text-accent transition-colors text-xs font-semibold uppercase tracking-wide"
+          >
+            <GraduationCap className="w-6 h-6" />
+            {/* <span>Arcadat</span> */}
+          </a>
+        </div>
+        
         {/* MOBILE BUTTON */}
         <button
           onClick={() => setOpen(!open)}
