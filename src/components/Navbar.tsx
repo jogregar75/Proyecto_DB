@@ -146,32 +146,30 @@ const Navbar = () => {
               )}
             </li>
           ))}
-        </ul>
+          <li className="w-full">
+            <div className="flex justify-center gap-6">
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/80 hover:text-accent transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-6 h-6" />
+              </a>
 
-        {/* SOCIAL ICONS EN EL MEMBRETE */}
-        <div className="hidden md:flex items-center gap-5 ml-8">
-          <a
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            title="Instagram"
-            className="text-white/80 hover:text-accent transition-colors"
-          >
-            <Instagram className="w-6 h-6" />
-          </a>
-          <a
-            href={ARCADAT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Arcadat"
-            title="Arcadat"
-            className="flex items-center gap-1 text-white/80 hover:text-accent transition-colors text-xs font-semibold uppercase tracking-wide"
-          >
-            <GraduationCap className="w-6 h-6" />
-            {/* <span>Arcadat</span> */}
-          </a>
-        </div>
+              <a
+                href={ARCADAT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/80 hover:text-accent transition-colors"
+                aria-label="Arcadat"
+              >
+                <GraduationCap className="w-6 h-6" />
+              </a>
+            </div>
+          </li>
+        </ul>
         
         {/* MOBILE BUTTON */}
         <button
@@ -234,6 +232,29 @@ const Navbar = () => {
                   )}
                 </li>
               ))}
+              <li className="w-full">
+            <div className="flex justify-center gap-6">
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/80 hover:text-accent transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-6 h-6" />
+              </a>
+
+              <a
+                href={ARCADAT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/80 hover:text-accent transition-colors"
+                aria-label="Arcadat"
+              >
+                <GraduationCap className="w-6 h-6" />
+              </a>
+            </div>
+          </li>
             </ul>
           </motion.div>
         )}
