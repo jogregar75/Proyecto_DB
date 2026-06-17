@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Instagram, GraduationCap } from "lucide-react";
+import { Menu, X, GraduationCap } from "lucide-react";
+import { FaInstagram } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import LogoCDB from "@/assets/LogoCDB.png";
 
@@ -153,9 +154,10 @@ const Navbar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/80 hover:text-accent transition-colors"
-                aria-label="Instagram"
+                aria-label="Instagram" title="Instagram"
               >
-                <Instagram className="w-6 h-6" />
+                {/* <Instagram className="w-6 h-6" /> */}
+                <FaInstagram className="w-8 h-8" />
               </a>
 
               <a
@@ -163,9 +165,9 @@ const Navbar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/80 hover:text-accent transition-colors"
-                aria-label="Arcadat"
+                aria-label="Arcadat" title="Arcadat"
               >
-                <GraduationCap className="w-6 h-6" />
+                <GraduationCap className="w-8 h-8" />
               </a>
             </div>
           </li>
@@ -239,9 +241,11 @@ const Navbar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/80 hover:text-accent transition-colors"
-                aria-label="Instagram"
+                aria-label="Instagram" title="Instagram"
               >
-                <Instagram className="w-6 h-6" />
+                {/* <Instagram className="w-6 h-6" /> */}
+                <FaInstagram className="w-6 h-6" />
+
               </a>
 
               <a
@@ -249,7 +253,7 @@ const Navbar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/80 hover:text-accent transition-colors"
-                aria-label="Arcadat"
+                aria-label="Arcadat" title="Arcadat"
               >
                 <GraduationCap className="w-6 h-6" />
               </a>
