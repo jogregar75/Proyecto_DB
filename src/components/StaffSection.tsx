@@ -168,12 +168,19 @@ const StaffSection = ({ title, subtitle, cargo, level, section }: Props) => {
       sectionGroup.teachers.push(t);
     }
 
-    return Array.from(map.entries());
+    // return Array.from(map.entries());
+    return Array.from(map.entries()).sort(([a], [b]) => {
+      if (a === "Especialistas") return 1;
+      if (b === "Especialistas") return -1;
+
+      return a.localeCompare(b, "es");
+    });
   }, [teachers, level]);
 
   const renderTeacherSubtitle = (t: Teacher) => {
-    if (level === "bachillerato") return (t.subjects ?? []).join(", ");
-    return ""; // grade already shown in group heading
+    // if (level === "bachillerato") return (t.subjects ?? []).join(", ");
+    // return ""; // grade already shown in group heading
+    return (t.subjects ?? []).join(", ");
   };
 
   return (
@@ -219,11 +226,14 @@ const StaffSection = ({ title, subtitle, cargo, level, section }: Props) => {
 
                       {sections.map((sectionGroup) => (
                         <div key={sectionGroup.section}>
-
-                          <h4 className="font-semibold text-foreground mb-4">
-                            Sección {sectionGroup.section}
-                          </h4>
-
+                          {sectionGroup.section === "Sin sección" ? (
+                            ""
+                            ) : (
+                            <h4 className="font-semibold text-foreground mb-4">
+                              Sección {sectionGroup.section}
+                            </h4>
+                            )
+                          }
                           <div className="grid grid-cols-2 gap-5">
 
                             {sectionGroup.teachers.map((t) => (

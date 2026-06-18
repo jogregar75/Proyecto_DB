@@ -127,7 +127,7 @@ const TeachersManager = () => {
       section: form.section.trim() || null,
       photo_url,
       grades: isBach ? [] : form.grades.split(",").map((s) => s.trim()).filter(Boolean),
-      subjects: isBach ? form.subjects.split(",").map((s) => s.trim()).filter(Boolean) : [],
+      subjects: form.subjects.split(",").map((s) => s.trim()).filter(Boolean),
       years: isBach ? form.years : [],
     };
     const { error } = editing
@@ -192,12 +192,18 @@ const TeachersManager = () => {
               <Label>Grado(s) (separados por coma)</Label>
               <Input placeholder="Ej: 1er grado, 2do grado" value={form.grades} onChange={(e) => setForm({ ...form, grades: e.target.value })} />
             </div>
-          ) : (
-            <>
-              <div className="space-y-2 sm:col-span-2">
+          ) : null}
+
+          <div className="space-y-2 sm:col-span-2">
+            <Label>Espacio(s) curricular(es) (separados por coma)</Label>
+            <Input placeholder="Ej: Informática, Matemática, Inglés" value={form.subjects} onChange={(e) => setForm({ ...form, subjects: e.target.value })} />
+          </div>
+     
+              {/* <div className="space-y-2 sm:col-span-2">
                 <Label>Materia(s) (separadas por coma)</Label>
                 <Input placeholder="Ej: Matemática, Física" value={form.subjects} onChange={(e) => setForm({ ...form, subjects: e.target.value })} />
-              </div>
+              </div> */}
+           {isBach && (
               <div className="space-y-2 sm:col-span-2">
                 <Label>Año(s)</Label>
                 <div className="flex flex-wrap gap-2">
@@ -213,7 +219,6 @@ const TeachersManager = () => {
                   })}
                 </div>
               </div>
-            </>
           )}
 
           <div className="space-y-2 sm:col-span-2">
