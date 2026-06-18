@@ -11,7 +11,7 @@ const HimnoSimbolos = () => (
       </motion.div>
 
       <figure className="my-8">
-        <img src={coral} alt="Coral del Colegio y Prof. Richard Assaf - 12 de Octubre de 1984" className="w-full mx-auto rounded-xl shadow-lg" />
+        <img src={coral} alt="Coral del Colegio y Prof. Richard Assaf - 12 de Octubre de 1984" className="w-full mx-auto rounded-xl" />
         <figcaption className="text-sm text-muted-foreground text-center mt-2">Fuente: Archivo 12 de Octubre de 1984. Coral del Colegio y Prof. Richard Assaf.</figcaption>
       </figure>
 
