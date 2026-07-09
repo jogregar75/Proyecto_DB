@@ -104,8 +104,8 @@ const Admin = () => {
       <main className="container mx-auto px-4 py-8 max-w-6xl">
         {!activeSection ? (
           <>
-            <div className="mb-8">
-              <h1 className="font-display text-3xl font-bold text-foreground">Dashboard</h1>
+            <div className="mb-8 py-12">
+              <h1 className="font-display text-3xl font-bold text-accent">Dashboard</h1>
               <p className="text-muted-foreground text-sm mt-1">Elige qué sección querés gestionar</p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -131,7 +131,7 @@ const Admin = () => {
           <>
             <button
               onClick={() => setParams({})}
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-accent mb-6"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-accent mb-6 py-12"
             >
               <ArrowLeft className="w-4 h-4" /> Volver al dashboard
             </button>

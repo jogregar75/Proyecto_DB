@@ -80,7 +80,7 @@ const NoticiaDetalle = () => {
 
   return (
     <div className="pt-24 pb-16 min-h-screen bg-background">
-      <div className="container mx-auto px-4 max-w-4xl">
+      <div className="container mx-auto px-4 max-w-4xl py-12">
         <Button asChild variant="ghost" size="sm" className="mb-6 gap-2 -ml-2">
           <Link to="/noticias"><ArrowLeft className="w-4 h-4" /> Volver</Link>
         </Button>
