@@ -30,6 +30,8 @@ import NivelPrimariaPrimera from "./pages/NivelPrimariaPrimera";
 import NivelPrimariaSegunda from "./pages/NivelPrimariaSegunda";
 import NivelSecundaria from "./pages/NivelSecundaria";
 import Promos from "./pages/Promos";
+import Noticias from "./pages/Noticias";
+import NoticiaDetalle from "./pages/NoticiaDetalle";
 
 const queryClient = new QueryClient();
 
@@ -65,6 +67,8 @@ const App = () => (
               <Route path="/comunicados" element={<Comunicados />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/noticias" element={<Noticias />} />
+              <Route path="/noticias/:id" element={<NoticiaDetalle />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

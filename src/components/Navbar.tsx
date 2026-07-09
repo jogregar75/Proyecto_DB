@@ -43,6 +43,7 @@ const navLinks = [
     { label: "Primaria", href: "/actividades/primaria" },
     ],
   },
+  { label: "Noticias", href: "/noticias" },
   { label: "Comunicados", href: "/comunicados" },
   { label: "Contacto", href: "/contacto", disabled: true },
 ];
