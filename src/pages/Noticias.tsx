@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CalendarDays, ChevronLeft, ChevronRight, Loader2, Star } from "lucide-react";
@@ -24,6 +24,7 @@ const Noticias = () => {
   const [items, setItems] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(0);
+  const topRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const load = async () => {
@@ -47,23 +48,37 @@ const Noticias = () => {
     void load();
   }, []);
 
+  //-----------------------
+  useEffect(() => {
+    topRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, [currentPage]);
+  //-----------------------
+
   const totalPages = useMemo(() => Math.ceil(items.length / ITEMS_PER_PAGE), [items.length]);
   const paginatedItems = useMemo(
     () => items.slice(currentPage * ITEMS_PER_PAGE, (currentPage + 1) * ITEMS_PER_PAGE),
     [items, currentPage]
   );
 
+  // const goToPage = (page: number) => {
+  //   if (page < 0 || page >= totalPages) return;
+  //   setCurrentPage(page);
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  // };
+
   const goToPage = (page: number) => {
     if (page < 0 || page >= totalPages) return;
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const excerpt = (text: string, n = 110) =>
     text.length > n ? text.slice(0, n).trimEnd() + "…" : text;
 
   return (
-    <div className="pt-24 pb-16 min-h-screen bg-background">
+    <div ref={topRef} className="pt-24 pb-16 min-h-screen bg-background">
       <div className="container mx-auto px-4 max-w-6xl py-12">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <span className="text-accent font-semibold uppercase tracking-widest text-lg">Noticias</span>
