@@ -15,7 +15,7 @@ import OrgChartManager from "@/components/admin/OrgChartManager";
 import CoordinatorsManager from "@/components/admin/CoordinatorsManager";
 import TeachersManager from "@/components/admin/TeachersManager";
 import PromosManager from "@/components/admin/PromosManager";
-import NewsManager from "@/components/admin/NewsManager";
+import NewsManager from "@/components/admin/NewsManager_O";
 
 type SectionKey =
   | "tareas" | "actividades" | "autoridades" | "coordinadores"
