@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import {
   GraduationCap, LogOut, Loader2, ArrowLeft,
-  ClipboardList, CalendarDays, Users, UserCog, Network, Award, Newspaper,
+  ClipboardList, CalendarDays, Users, UserCog, Network, Award, Newspaper, ShieldCheck,
 } from "lucide-react";
 import { isAdminUser } from "@/lib/admin-auth";
 import WeeklyTasksManager from "@/components/admin/WeeklyTasksManager";
@@ -15,11 +15,12 @@ import OrgChartManager from "@/components/admin/OrgChartManager";
 import CoordinatorsManager from "@/components/admin/CoordinatorsManager";
 import TeachersManager from "@/components/admin/TeachersManager";
 import PromosManager from "@/components/admin/PromosManager";
-import NewsManager from "@/components/admin/NewsManager_O";
+import NewsManager from "@/components/admin/NewsManager";
+import UsersManager from "@/components/admin/UsersManager";
 
 type SectionKey =
   | "tareas" | "actividades" | "autoridades" | "coordinadores"
-  | "docentes" | "organigrama" | "promos" | "noticias";
+  | "docentes" | "organigrama" | "promos" | "noticias" | "usuarios";
 
 const SECTIONS: { key: SectionKey; title: string; description: string; icon: React.ElementType; color: string }[] = [
   { key: "noticias", title: "Noticias", description: "Noticias, actos y actividades con fotos/videos", icon: Newspaper, color: "bg-indigo-500" },
@@ -30,6 +31,7 @@ const SECTIONS: { key: SectionKey; title: string; description: string; icon: Rea
   { key: "docentes", title: "Docentes", description: "Profesores y secciones", icon: GraduationCap, color: "bg-rose-500" },
   { key: "organigrama", title: "Organigrama", description: "Imagen institucional", icon: Network, color: "bg-cyan-500" },
   { key: "promos", title: "Promociones", description: "Logos de promociones", icon: Award, color: "bg-orange-500" },
+  { key: "usuarios", title: "Usuarios", description: "Administradores con acceso al panel", icon: ShieldCheck, color: "bg-slate-600" },
 ];
 
 const renderSection = (key: SectionKey) => {
@@ -42,6 +44,7 @@ const renderSection = (key: SectionKey) => {
     case "docentes": return <TeachersManager />;
     case "organigrama": return <OrgChartManager />;
     case "promos": return <PromosManager />;
+    case "usuarios": return <UsersManager />;
   }
 };
 
@@ -54,6 +57,16 @@ const Admin = () => {
   const activeSection = SECTIONS.find((s) => s.key === active);
 
   useEffect(() => {
+    // IMPORTANT: never `await` Supabase calls inside onAuthStateChange —
+    // it deadlocks the SDK and causes subsequent inserts/updates to hang
+    // until the page is refreshed. Subscribe first (sync-only handler),
+    // then do the async access check separately.
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_e, session) => {
+      if (!session) {
+        navigate("/admin/login");
+      }
+    });
+
     const check = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) { navigate("/admin/login"); return; }
@@ -66,11 +79,7 @@ const Admin = () => {
       setCheckingAccess(false);
     };
     void check();
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_e, session) => {
-      if (!session) { navigate("/admin/login"); return; }
-      const ok = await isAdminUser(session.user.id);
-      if (!ok) { await supabase.auth.signOut(); navigate("/admin/login"); }
-    });
+
     return () => subscription.unsubscribe();
   }, [navigate, toast]);
 
@@ -81,8 +90,8 @@ const Admin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="bg-primary border-b border-primary-foreground/10 sticky top-0 z-40">
+    <div className="min-h-screen bg-background py-14">
+      {/* <header className="bg-primary border-b border-primary-foreground/10 sticky top-0 z-40">
         <div className="container mx-auto flex items-center justify-between h-16 px-4">
           <div className="flex items-center gap-2 text-primary-foreground">
             <GraduationCap className="w-7 h-7 text-accent" />
@@ -93,14 +102,20 @@ const Admin = () => {
             <Button variant="secondary" size="sm" onClick={handleLogout} className="gap-2"><LogOut className="w-4 h-4" /> Salir</Button>
           </div>
         </div>
-      </header>
+      </header> */}
 
-      <main className="container mx-auto px-4 py-8 max-w-6xl">
+      <main className="container mx-auto px-4 py-20 max-w-6xl">
         {!activeSection ? (
           <>
-            <div className="mb-8">
-              <h1 className="font-display text-3xl font-bold text-foreground">Dashboard</h1>
-              <p className="text-muted-foreground text-sm mt-1">Elige qué sección querés gestionar</p>
+            <div className="container mx-auto flex items-center justify-between mb-8">
+              <div>
+                <h1 className="font-display text-3xl font-bold text-foreground">Panel Administrativo</h1>
+                <p className="text-muted-foreground text-sm mt-1">Elige qué sección querés gestionar</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Link to="/" className="text-muted-foreground hover:text-accent text-sm hidden sm:block">Ver sitio web</Link>
+                <Button variant="secondary" size="sm" onClick={handleLogout} className="gap-2"><LogOut className="w-4 h-4" /> Salir</Button>
+              </div>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {SECTIONS.map((s) => {

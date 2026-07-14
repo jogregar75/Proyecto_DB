@@ -5,43 +5,51 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import {
   GraduationCap, LogOut, Loader2, ArrowLeft,
-  ClipboardList, CalendarDays, Users, UserCog, Network, Award, Newspaper,
+  ClipboardList, Megaphone, Users, UserCog, Network, Award, Newspaper, ShieldCheck,
 } from "lucide-react";
+import {
+  AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent,
+  AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { isAdminUser } from "@/lib/admin-auth";
 import WeeklyTasksManager from "@/components/admin/WeeklyTasksManager";
-import SchoolActivitiesManager from "@/components/admin/SchoolActivitiesManager";
+import AnnouncementsManager from "@/components/admin/AnnouncementsManager";
 import AuthoritiesManager from "@/components/admin/AuthoritiesManager";
 import OrgChartManager from "@/components/admin/OrgChartManager";
 import CoordinatorsManager from "@/components/admin/CoordinatorsManager";
 import TeachersManager from "@/components/admin/TeachersManager";
 import PromosManager from "@/components/admin/PromosManager";
 import NewsManager from "@/components/admin/NewsManager";
+import UsersManager from "@/components/admin/UsersManager";
 
 type SectionKey =
-  | "tareas" | "actividades" | "autoridades" | "coordinadores"
-  | "docentes" | "organigrama" | "promos" | "noticias";
+  | "tareas" | "comunicados" | "autoridades" | "coordinadores"
+  | "docentes" | "organigrama" | "promos" | "noticias" | "usuarios";
 
 const SECTIONS: { key: SectionKey; title: string; description: string; icon: React.ElementType; color: string }[] = [
   { key: "noticias", title: "Noticias", description: "Noticias, actos y actividades con fotos/videos", icon: Newspaper, color: "bg-indigo-500" },
   { key: "tareas", title: "Tareas Semanales", description: "Asignaciones por semana y nivel", icon: ClipboardList, color: "bg-blue-500" },
-  { key: "actividades", title: "Actividades del Colegio", description: "Eventos y actividades escolares", icon: CalendarDays, color: "bg-emerald-500" },
+  { key: "comunicados", title: "Comunicados", description: "Avisos institucionales con archivos opcionales", icon: Megaphone, color: "bg-emerald-500" },
   { key: "autoridades", title: "Autoridades", description: "Directivos y personal jerárquico", icon: Users, color: "bg-amber-500" },
   { key: "coordinadores", title: "Coordinadores", description: "Coordinadores por nivel y año", icon: UserCog, color: "bg-purple-500" },
   { key: "docentes", title: "Docentes", description: "Profesores y secciones", icon: GraduationCap, color: "bg-rose-500" },
   { key: "organigrama", title: "Organigrama", description: "Imagen institucional", icon: Network, color: "bg-cyan-500" },
   { key: "promos", title: "Promociones", description: "Logos de promociones", icon: Award, color: "bg-orange-500" },
+  { key: "usuarios", title: "Usuarios", description: "Administradores con acceso al panel", icon: ShieldCheck, color: "bg-slate-600" },
 ];
 
 const renderSection = (key: SectionKey) => {
   switch (key) {
     case "noticias": return <NewsManager />;
     case "tareas": return <WeeklyTasksManager />;
-    case "actividades": return <SchoolActivitiesManager />;
+    case "comunicados": return <AnnouncementsManager />;
     case "autoridades": return <AuthoritiesManager />;
     case "coordinadores": return <CoordinatorsManager />;
     case "docentes": return <TeachersManager />;
     case "organigrama": return <OrgChartManager />;
     case "promos": return <PromosManager />;
+    case "usuarios": return <UsersManager />;
   }
 };
 
@@ -87,8 +95,8 @@ const Admin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="bg-primary border-b border-primary-foreground/10 sticky top-0 z-40">
+    <div className="min-h-screen bg-background py-20">
+      {/* <header className="bg-primary border-b border-primary-foreground/10 sticky top-0 z-40">
         <div className="container mx-auto flex items-center justify-between h-16 px-4">
           <div className="flex items-center gap-2 text-primary-foreground">
             <GraduationCap className="w-7 h-7 text-accent" />
@@ -99,14 +107,20 @@ const Admin = () => {
             <Button variant="secondary" size="sm" onClick={handleLogout} className="gap-2"><LogOut className="w-4 h-4" /> Salir</Button>
           </div>
         </div>
-      </header>
+      </header> */}
 
       <main className="container mx-auto px-4 py-8 max-w-6xl">
         {!activeSection ? (
           <>
-            <div className="mb-8 py-12">
-              <h1 className="font-display text-3xl font-bold text-accent">Dashboard</h1>
-              <p className="text-muted-foreground text-sm mt-1">Elige qué sección querés gestionar</p>
+            <div className="container mx-auto flex items-center justify-between mb-8">
+              <div>
+                <h1 className="font-display text-3xl font-bold text-foreground">Panel Administrativo</h1>
+                <p className="text-muted-foreground text-sm mt-1">Elige qué sección querés gestionar</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Link to="/" className="text-muted-foreground hover:text-accent text-sm hidden sm:block">Ver sitio web</Link>
+                <Button variant="secondary" size="sm" onClick={handleLogout} className="gap-2"><LogOut className="w-4 h-4" /> Salir</Button>
+              </div>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {SECTIONS.map((s) => {
@@ -131,7 +145,7 @@ const Admin = () => {
           <>
             <button
               onClick={() => setParams({})}
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-accent mb-6 py-12"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-accent mb-6"
             >
               <ArrowLeft className="w-4 h-4" /> Volver al dashboard
             </button>

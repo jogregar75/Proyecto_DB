@@ -52,83 +52,13 @@ export type Database = {
           },
         ]
       }
-      announcement_files: {
-        Row: {
-          announcement_id: string
-          created_at: string
-          file_name: string
-          file_path: string
-          file_size: number | null
-          id: string
-          mime_type: string | null
-        }
-        Insert: {
-          announcement_id: string
-          created_at?: string
-          file_name: string
-          file_path: string
-          file_size?: number | null
-          id?: string
-          mime_type?: string | null
-        }
-        Update: {
-          announcement_id?: string
-          created_at?: string
-          file_name?: string
-          file_path?: string
-          file_size?: number | null
-          id?: string
-          mime_type?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "announcement_files_announcement_id_fkey"
-            columns: ["announcement_id"]
-            isOneToOne: false
-            referencedRelation: "announcements"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      announcements: {
-        Row: {
-          content: string | null
-          created_at: string
-          id: string
-          published_at: string
-          title: string
-          updated_at: string
-          urgent: boolean
-        }
-        Insert: {
-          content?: string | null
-          created_at?: string
-          id?: string
-          published_at?: string
-          title: string
-          updated_at?: string
-          urgent?: boolean
-        }
-        Update: {
-          content?: string | null
-          created_at?: string
-          id?: string
-          published_at?: string
-          title?: string
-          updated_at?: string
-          urgent?: boolean
-        }
-        Relationships: []
-      }
       authorities: {
         Row: {
           created_at: string
           display_order: number
           id: string
-          joined_date: string | null
           name: string
           photo_url: string | null
-          positions: string | null
           role: string
           updated_at: string
         }
@@ -136,10 +66,8 @@ export type Database = {
           created_at?: string
           display_order?: number
           id?: string
-          joined_date?: string | null
           name: string
           photo_url?: string | null
-          positions?: string | null
           role: string
           updated_at?: string
         }
@@ -147,154 +75,9 @@ export type Database = {
           created_at?: string
           display_order?: number
           id?: string
-          joined_date?: string | null
           name?: string
           photo_url?: string | null
-          positions?: string | null
           role?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      coordinators: {
-        Row: {
-          created_at: string
-          id: string
-          level: Database["public"]["Enums"]["education_level"]
-          name: string
-          photo_url: string | null
-          section: string
-          updated_at: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          level: Database["public"]["Enums"]["education_level"]
-          name: string
-          photo_url?: string | null
-          section: string
-          updated_at?: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          level?: Database["public"]["Enums"]["education_level"]
-          name?: string
-          photo_url?: string | null
-          section?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      news: {
-        Row: {
-          content: string
-          created_at: string
-          featured: boolean
-          id: string
-          published_at: string
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          content: string
-          created_at?: string
-          featured?: boolean
-          id?: string
-          published_at?: string
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          content?: string
-          created_at?: string
-          featured?: boolean
-          id?: string
-          published_at?: string
-          title?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      news_media: {
-        Row: {
-          created_at: string
-          id: string
-          media_type: string
-          news_id: string
-          position: number
-          storage_path: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          media_type: string
-          news_id: string
-          position?: number
-          storage_path: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          media_type?: string
-          news_id?: string
-          position?: number
-          storage_path?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "news_media_news_id_fkey"
-            columns: ["news_id"]
-            isOneToOne: false
-            referencedRelation: "news"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      org_chart_settings: {
-        Row: {
-          created_at: string
-          id: string
-          image_url: string | null
-          updated_at: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          image_url?: string | null
-          updated_at?: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          image_url?: string | null
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      promo_logos: {
-        Row: {
-          created_at: string
-          display_order: number
-          id: string
-          image_url: string
-          promo_year: number
-          updated_at: string
-        }
-        Insert: {
-          created_at?: string
-          display_order?: number
-          id?: string
-          image_url: string
-          promo_year: number
-          updated_at?: string
-        }
-        Update: {
-          created_at?: string
-          display_order?: number
-          id?: string
-          image_url?: string
-          promo_year?: number
           updated_at?: string
         }
         Relationships: []
@@ -366,51 +149,6 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
-      }
-      teachers: {
-        Row: {
-          created_at: string
-          first_name: string
-          grades: string[]
-          id: string
-          last_name: string
-          level: Database["public"]["Enums"]["education_level"]
-          name: string | null
-          photo_url: string | null
-          section: string | null
-          subjects: string[]
-          updated_at: string
-          years: string[]
-        }
-        Insert: {
-          created_at?: string
-          first_name: string
-          grades?: string[]
-          id?: string
-          last_name: string
-          level: Database["public"]["Enums"]["education_level"]
-          name?: string | null
-          photo_url?: string | null
-          section?: string | null
-          subjects?: string[]
-          updated_at?: string
-          years?: string[]
-        }
-        Update: {
-          created_at?: string
-          first_name?: string
-          grades?: string[]
-          id?: string
-          last_name?: string
-          level?: Database["public"]["Enums"]["education_level"]
-          name?: string | null
-          photo_url?: string | null
-          section?: string | null
-          subjects?: string[]
-          updated_at?: string
-          years?: string[]
-        }
-        Relationships: []
       }
       user_roles: {
         Row: {
@@ -484,7 +222,6 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
-      education_level: "inicial" | "primaria_1" | "primaria_2" | "bachillerato"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -613,7 +350,6 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "moderator", "user"],
-      education_level: ["inicial", "primaria_1", "primaria_2", "bachillerato"],
     },
   },
 } as const

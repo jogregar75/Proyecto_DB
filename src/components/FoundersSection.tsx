@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 // import enzoPhoto from "@/assets/enzo-guariento.png.asset.json";
 // import renatoPhoto from "@/assets/renato-marcuzzi.jpg.asset.json";
 // import guerrinoPhoto from "@/assets/guerrino-guariento.jpg.asset.json";
-import enzoPhoto from "@/assets/fundadores/enzo-guariento.png";
+import enzoPhoto from "@/assets/fundadores/Enzo-Guariento.jpg";
 import renatoPhoto from "@/assets/fundadores/renato-marcuzzi.jpg";
-import guerrinoPhoto from "@/assets/fundadores/guerrino-guariento.jpg";
+import guerrinoPhoto from "@/assets/fundadores/Guerrino-Guariento.jpg";
 
 type Founder = {
   name: string;
