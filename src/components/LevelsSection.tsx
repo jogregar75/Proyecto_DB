@@ -18,7 +18,7 @@ const levels: {
 }[] = [
   {
     title: "Educación Inicial",
-    age: "3 a 5 años",
+    age: "3 a 6 años",
     img: inicialImg,
     description:
       "Estimulación temprana, juego dirigido y desarrollo de habilidades sociales en un ambiente cálido y seguro. Nuestros pequeños aprenden a explorar el mundo con curiosidad y creatividad.",
@@ -27,7 +27,7 @@ const levels: {
   },
   {
     title: "Educación Primaria",
-    age: "6 a 11 años",
+    age: "6 a 12 años",
     img: primariaImg,
     description:
       "Consolidación de competencias académicas fundamentales con metodologías activas e innovadoras. Fomentamos el pensamiento crítico y el amor por el aprendizaje.",
@@ -39,7 +39,7 @@ const levels: {
   },
   {
     title: "Educación Secundaria",
-    age: "12 a 16 años",
+    age: "12 a 17 años",
     img: secundariaImg,
     description:
       "Preparación integral para la educación superior con énfasis en ciencias y orientación vocacional. Formamos líderes del mañana.",
