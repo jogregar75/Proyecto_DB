@@ -25,13 +25,7 @@
 // export default Index;
 
 import HeroSection from "@/components/HeroSection";
-import HomePopup from "@/components/HomePopup";
 
 export default function Index() {
-  return (
-    <>
-      <HomePopup />
-      <HeroSection />
-    </>
-  );
+  return <HeroSection />;
 }

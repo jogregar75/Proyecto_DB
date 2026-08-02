@@ -5,11 +5,16 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import {
   GraduationCap, LogOut, Loader2, ArrowLeft,
-  ClipboardList, CalendarDays, Users, UserCog, Network, Award, Newspaper, ShieldCheck,
+  ClipboardList, Megaphone, Users, UserCog, Network, Award, Newspaper, ShieldCheck,
 } from "lucide-react";
+import {
+  AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent,
+  AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { isAdminUser } from "@/lib/admin-auth";
 import WeeklyTasksManager from "@/components/admin/WeeklyTasksManager";
-import SchoolActivitiesManager from "@/components/admin/SchoolActivitiesManager";
+import AnnouncementsManager from "@/components/admin/AnnouncementsManager";
 import AuthoritiesManager from "@/components/admin/AuthoritiesManager";
 import OrgChartManager from "@/components/admin/OrgChartManager";
 import CoordinatorsManager from "@/components/admin/CoordinatorsManager";
@@ -19,13 +24,13 @@ import NewsManager from "@/components/admin/NewsManager";
 import UsersManager from "@/components/admin/UsersManager";
 
 type SectionKey =
-  | "tareas" | "actividades" | "autoridades" | "coordinadores"
+  | "tareas" | "comunicados" | "autoridades" | "coordinadores"
   | "docentes" | "organigrama" | "promos" | "noticias" | "usuarios";
 
 const SECTIONS: { key: SectionKey; title: string; description: string; icon: React.ElementType; color: string }[] = [
   { key: "noticias", title: "Noticias", description: "Noticias, actos y actividades con fotos/videos", icon: Newspaper, color: "bg-indigo-500" },
   { key: "tareas", title: "Tareas Semanales", description: "Asignaciones por semana y nivel", icon: ClipboardList, color: "bg-blue-500" },
-  { key: "actividades", title: "Actividades del Colegio", description: "Eventos y actividades escolares", icon: CalendarDays, color: "bg-emerald-500" },
+  { key: "comunicados", title: "Comunicados", description: "Avisos institucionales con archivos opcionales", icon: Megaphone, color: "bg-emerald-500" },
   { key: "autoridades", title: "Autoridades", description: "Directivos y personal jerárquico", icon: Users, color: "bg-amber-500" },
   { key: "coordinadores", title: "Coordinadores", description: "Coordinadores por nivel y año", icon: UserCog, color: "bg-purple-500" },
   { key: "docentes", title: "Docentes", description: "Profesores y secciones", icon: GraduationCap, color: "bg-rose-500" },
@@ -38,7 +43,7 @@ const renderSection = (key: SectionKey) => {
   switch (key) {
     case "noticias": return <NewsManager />;
     case "tareas": return <WeeklyTasksManager />;
-    case "actividades": return <SchoolActivitiesManager />;
+    case "comunicados": return <AnnouncementsManager />;
     case "autoridades": return <AuthoritiesManager />;
     case "coordinadores": return <CoordinatorsManager />;
     case "docentes": return <TeachersManager />;
@@ -90,7 +95,7 @@ const Admin = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background py-14">
+    <div className="min-h-screen bg-background py-20">
       {/* <header className="bg-primary border-b border-primary-foreground/10 sticky top-0 z-40">
         <div className="container mx-auto flex items-center justify-between h-16 px-4">
           <div className="flex items-center gap-2 text-primary-foreground">
@@ -104,7 +109,7 @@ const Admin = () => {
         </div>
       </header> */}
 
-      <main className="container mx-auto px-4 py-20 max-w-6xl">
+      <main className="container mx-auto px-4 py-8 max-w-6xl">
         {!activeSection ? (
           <>
             <div className="container mx-auto flex items-center justify-between mb-8">

@@ -272,6 +272,36 @@ export type Database = {
         }
         Relationships: []
       }
+      popup_settings: {
+        Row: {
+          created_at: string
+          enabled: boolean
+          id: string
+          media_type: string
+          media_url: string | null
+          title: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          enabled?: boolean
+          id?: string
+          media_type?: string
+          media_url?: string | null
+          title?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          enabled?: boolean
+          id?: string
+          media_type?: string
+          media_url?: string | null
+          title?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       promo_logos: {
         Row: {
           created_at: string

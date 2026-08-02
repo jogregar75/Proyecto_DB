@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import {
   GraduationCap, LogOut, Loader2, ArrowLeft,
-  ClipboardList, Megaphone, Users, UserCog, Network, Award, Newspaper, ShieldCheck,
+  ClipboardList, Megaphone, Users, UserCog, Network, Award, Newspaper, ShieldCheck, MonitorPlay,
 } from "lucide-react";
 import {
   AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent,
@@ -22,10 +22,11 @@ import TeachersManager from "@/components/admin/TeachersManager";
 import PromosManager from "@/components/admin/PromosManager";
 import NewsManager from "@/components/admin/NewsManager";
 import UsersManager from "@/components/admin/UsersManager";
+import PopupManager from "@/components/admin/PopupManager";
 
 type SectionKey =
   | "tareas" | "comunicados" | "autoridades" | "coordinadores"
-  | "docentes" | "organigrama" | "promos" | "noticias" | "usuarios";
+  | "docentes" | "organigrama" | "promos" | "noticias" | "usuarios" | "popup";
 
 const SECTIONS: { key: SectionKey; title: string; description: string; icon: React.ElementType; color: string }[] = [
   { key: "noticias", title: "Noticias", description: "Noticias, actos y actividades con fotos/videos", icon: Newspaper, color: "bg-indigo-500" },
@@ -36,6 +37,7 @@ const SECTIONS: { key: SectionKey; title: string; description: string; icon: Rea
   { key: "docentes", title: "Docentes", description: "Profesores y secciones", icon: GraduationCap, color: "bg-rose-500" },
   { key: "organigrama", title: "Organigrama", description: "Imagen institucional", icon: Network, color: "bg-cyan-500" },
   { key: "promos", title: "Promociones", description: "Logos de promociones", icon: Award, color: "bg-orange-500" },
+  { key: "popup", title: "Ventana emergente", description: "Aviso con imagen o video en la página principal", icon: MonitorPlay, color: "bg-pink-500" },
   { key: "usuarios", title: "Usuarios", description: "Administradores con acceso al panel", icon: ShieldCheck, color: "bg-slate-600" },
 ];
 
@@ -50,6 +52,7 @@ const renderSection = (key: SectionKey) => {
     case "organigrama": return <OrgChartManager />;
     case "promos": return <PromosManager />;
     case "usuarios": return <UsersManager />;
+    case "popup": return <PopupManager />;
   }
 };
 

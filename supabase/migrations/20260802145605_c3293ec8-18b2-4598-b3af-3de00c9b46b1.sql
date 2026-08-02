@@ -1,0 +1,4 @@
+CREATE POLICY "Popup media readable" ON storage.objects FOR SELECT USING (bucket_id = 'popup-media');
+CREATE POLICY "Admins upload popup media" ON storage.objects FOR INSERT TO authenticated WITH CHECK (bucket_id = 'popup-media' AND has_role(auth.uid(), 'admin'::app_role));
+CREATE POLICY "Admins update popup media" ON storage.objects FOR UPDATE TO authenticated USING (bucket_id = 'popup-media' AND has_role(auth.uid(), 'admin'::app_role)) WITH CHECK (bucket_id = 'popup-media' AND has_role(auth.uid(), 'admin'::app_role));
+CREATE POLICY "Admins delete popup media" ON storage.objects FOR DELETE TO authenticated USING (bucket_id = 'popup-media' AND has_role(auth.uid(), 'admin'::app_role));
