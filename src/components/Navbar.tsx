@@ -13,14 +13,15 @@ const navLinks = [
   {
     label: "Nosotros",
     submenu: [
-      { label: "Institución", href: "/nosotros" },
+      { label: "Institución", href: "/nosotros/institucion" },
       { label: "Organigrama", href: "/nosotros/organigrama" },
       { label: "Autoridades", href: "/nosotros/autoridades" },
-      { label: "Nuestra Historia", href: "/nosotros/resena" },
+      { label: "Nuestra Historia", href: "/nosotros/historia" },
       { label: "Fundadores", href: "/nosotros/fundadores" },
-      { label: "Promociones", href: "/actividades/promos" },
+      { label: "Promociones", href: "/nosotros/promos" },
       { label: "Himno y Símbolos", href: "/nosotros/himno" },
       { label: "Nuestro Patrono", href: "/nosotros/patrono" },
+      { label: "Instalaciones", href: "/nosotros/instalaciones" },
     ],
   },
   // { label: "Niveles", href: "/niveles" },

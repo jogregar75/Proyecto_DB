@@ -7,7 +7,7 @@ import ciencias from "@/assets/historia/Historia4.jpg";
 import logo40 from "@/assets/historia/Historia5.jpg";
 
 const ResenaHistorica = () => (
-  <div className="pt-24 md:pt-28 pb-20">
+  <div className="pt-28 md:pt-28 pb-20">
     <div className="container mx-auto px-4 max-w-4xl">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
         <span className="text-accent font-semibold uppercase tracking-widest text-lg">Un legado educativo</span>

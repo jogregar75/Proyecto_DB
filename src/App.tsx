@@ -32,6 +32,7 @@ import NivelSecundaria from "./pages/NivelSecundaria";
 import Promos from "./pages/Promos";
 import Noticias from "./pages/Noticias";
 import NoticiaDetalle from "./pages/NoticiaDetalle";
+import Instalaciones from "./pages/Instalaciones";
 
 const queryClient = new QueryClient();
 
@@ -48,13 +49,15 @@ const App = () => (
           <div className="flex-grow">
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/nosotros" element={<Institucion />} />
+              <Route path="/nosotros/institucion" element={<Institucion />} />
               <Route path="/nosotros/organigrama" element={<Organigrama />} />
               <Route path="/nosotros/autoridades" element={<Autoridades />} />
+              <Route path="/nosotros/historia" element={<ResenaHistorica />} />
               <Route path="/nosotros/fundadores" element={<Fundadores />} />
-              <Route path="/nosotros/resena" element={<ResenaHistorica />} />
+              <Route path="/nosotros/promos" element={<Promos />} />
               <Route path="/nosotros/himno" element={<HimnoSimbolos />} />
               <Route path="/nosotros/patrono" element={<Patrono />} />
+              <Route path="/nosotros/instalaciones" element={<Instalaciones />} />
               <Route path="/niveles" element={<Niveles />} />
               <Route path="/niveles/inicial" element={<NivelInicial />} />
               <Route path="/niveles/primaria/primera-etapa" element={<NivelPrimariaPrimera />} />
@@ -62,7 +65,6 @@ const App = () => (
               <Route path="/niveles/secundaria/:year" element={<NivelSecundaria />} />
               <Route path="/actividades/inicial" element={<Actividadesinical />} />
               <Route path="/actividades/primaria" element={<Actividadesprimaria />} />
-              <Route path="/actividades/promos" element={<Promos />} />
               <Route path="/contacto" element={<Contacto />} />
               <Route path="/comunicados" element={<Comunicados />} />
               <Route path="/admin/login" element={<AdminLogin />} />

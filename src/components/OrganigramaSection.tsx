@@ -21,7 +21,7 @@ const OrganigramaSection = () => {
   }, []);
 
   return (
-    <section className="py-24 bg-section-alt">
+    <section className="py-20 bg-section-alt">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,7 +29,7 @@ const OrganigramaSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="text-accent font-semibold uppercase tracking-widest text-sm">
+          <span className="text-accent font-semibold uppercase tracking-widest text-lg">
             Nuestra Organización
           </span>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mt-3">

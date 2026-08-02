@@ -18,7 +18,7 @@ const values = [
 ];
 
 const AboutSection = () => (
-  <section id="nosotros" className="py-24 bg-section-alt">
+  <section id="nosotros" className="py-20 bg-section-alt">
     <div className="container mx-auto px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
