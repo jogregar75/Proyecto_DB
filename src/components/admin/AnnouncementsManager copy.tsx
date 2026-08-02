@@ -43,7 +43,6 @@ const AnnouncementsManager = () => {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
-  const [deletingAll, setDeletingAll] = useState(false);
   const [downloadingPath, setDownloadingPath] = useState<string | null>(null);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [fileInputKey, setFileInputKey] = useState(0);
@@ -162,26 +161,6 @@ const AnnouncementsManager = () => {
     }
   };
 
-  const handleDeleteAll = async () => {
-    if (!window.confirm("¿Desea eliminar TODOS los comunicados y sus archivos? Esta acción no se puede deshacer.")) return;
-    setDeletingAll(true);
-    try {
-      const paths = items.flatMap((i) => i.announcement_files.map((f) => f.file_path));
-      await removeAnnouncementFiles(paths);
-      const { error } = await (supabase as any)
-        .from("announcements")
-        .delete()
-        .neq("id", "00000000-0000-0000-0000-000000000000");
-      if (error) throw error;
-      toast({ title: "Todos los comunicados fueron eliminados" });
-      await fetchItems();
-    } catch {
-      toast({ title: "Error", description: "No se pudieron eliminar todos los comunicados.", variant: "destructive" });
-    } finally {
-      setDeletingAll(false);
-    }
-  };
-
   const handleDownload = async (file: AnnouncementFile) => {
     try {
       setDownloadingPath(file.file_path);
@@ -281,14 +260,7 @@ const AnnouncementsManager = () => {
       </form>
 
       <div className="mt-10 pt-8 border-t border-border">
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-          <h3 className="font-display text-xl font-bold text-foreground">Comunicados publicados</h3>
-          {items.length > 0 && (
-            <Button variant="destructive" onClick={() => void handleDeleteAll()} disabled={deletingAll} className="gap-2">
-              {deletingAll ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />} Eliminar todos
-            </Button>
-          )}
-        </div>
+        <h3 className="font-display text-xl font-bold text-foreground mb-6">Comunicados publicados</h3>
 
         {loading ? (
           <div className="flex justify-center py-12"><Loader2 className="w-7 h-7 animate-spin text-accent" /></div>

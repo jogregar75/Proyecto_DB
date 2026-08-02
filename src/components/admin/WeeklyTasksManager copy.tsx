@@ -41,7 +41,6 @@ const WeeklyTasksManager = () => {
   });
   const [saving, setSaving] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
-  const [deletingAll, setDeletingAll] = useState(false);
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -84,7 +83,8 @@ const WeeklyTasksManager = () => {
     setUploading(true);
     for (const file of selectedFiles) {
       const ext = file.name.split(".").pop();
-      const path = `tasks/${taskId}/${crypto.randomUUID()}.${ext}`;
+      // const path = `tasks/${taskId}/${crypto.randomUUID()}.${ext}`;
+      const path =`tasks/${taskId}/${Date.now()}-${Math.random().toString(36).substring(2, 9)}.${ext}`;
       const { error: uploadError } = await supabase.storage.from("activity-files").upload(path, file);
       if (uploadError) { toast({ title: "Error", description: `No se pudo subir ${file.name}`, variant: "destructive" }); continue; }
       await (supabase as any).from("task_files").insert({
@@ -146,23 +146,6 @@ const WeeklyTasksManager = () => {
     else { toast({ title: "Eliminada" }); void fetchTasks(); }
   };
 
-  const handleDeleteAll = async () => {
-    if (!window.confirm("¿Está seguro de eliminar TODAS las tareas y sus archivos? Esta acción no se puede deshacer.")) return;
-    setDeletingAll(true);
-    try {
-      const paths = tasks.flatMap((t) => t.task_files.map((f) => f.file_path));
-      if (paths.length) await supabase.storage.from("activity-files").remove(paths);
-      const { error } = await supabase.from("weekly_tasks").delete().neq("id", "00000000-0000-0000-0000-000000000000");
-      if (error) throw error;
-      toast({ title: "Todas las tareas fueron eliminadas" });
-      await fetchTasks();
-    } catch {
-      toast({ title: "Error", description: "No se pudieron eliminar todas las tareas.", variant: "destructive" });
-    } finally {
-      setDeletingAll(false);
-    }
-  };
-
   const grouped = tasks.reduce((acc, t) => {
     if (!acc[t.week_start]) acc[t.week_start] = [];
     acc[t.week_start].push(t);
@@ -181,11 +164,6 @@ const WeeklyTasksManager = () => {
             <option value="all">Todos los niveles</option>
             {levelOptions.map((l) => (<option key={l.value} value={l.value}>{l.label}</option>))}
           </select>
-          {tasks.length > 0 && (
-            <Button variant="destructive" onClick={() => void handleDeleteAll()} disabled={deletingAll} className="gap-2">
-              {deletingAll ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />} Eliminar todas
-            </Button>
-          )}
           <Button onClick={() => { resetForm(); setShowForm(true); }} className="gap-2"><Plus className="w-4 h-4" /> Nueva Tarea</Button>
         </div>
       </div>

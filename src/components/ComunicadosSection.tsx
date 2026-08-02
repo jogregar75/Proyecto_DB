@@ -95,17 +95,17 @@ const ComunicadosSection = () => {
             <p className="text-muted-foreground mt-2">Los nuevos comunicados aparecerán aquí automáticamente.</p>
           </div>
         ) : (
-          <div className="max-w-3xl mx-auto space-y-6">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((item, i) => {
               const Icon = item.urgent ? AlertCircle : Bell;
               return (
                 <motion.div
                   key={item.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
-                  className={`bg-card rounded-xl p-6 shadow-sm border ${item.urgent ? "border-destructive/40 bg-destructive/5" : "border-border"}`}
+                  transition={{ delay: (i % 3) * 0.05 }}
+                  className={`bg-card rounded-xl p-6 shadow-sm border h-full ${item.urgent ? "border-destructive/40 bg-destructive/5" : "border-border"}`}
                 >
                   <div className="flex items-start gap-4">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${item.urgent ? "bg-destructive/10" : "bg-accent/10"}`}>
