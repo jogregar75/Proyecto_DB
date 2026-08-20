@@ -42,9 +42,12 @@ const FooterSection = () => (
         </div>
         
       </div>
-      <div className="border-t border-primary-foreground/10 pt-3 text-center text-sm text-primary-foreground/50">
+      <div className="border-t border-primary-foreground/10 pt-1 text-center text-sm text-primary-foreground/50">
         © 2026 U.E. Colegio Los Pirineos Don Bosco. Todos los derechos reservados.
       </div>
+      {/* <div className="border-primary-foreground/10 text-center text-sm text-primary-foreground/50">
+        Desarrollado por Ing. José García.
+      </div> */}
     </div>
   </footer>
 );

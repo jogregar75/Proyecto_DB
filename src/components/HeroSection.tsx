@@ -42,7 +42,7 @@ const HeroSection = () => (
         </a> */}
 
         <Link
-          to="/nosotros"
+          to="/nosotros/institucion"
           className="bg-gold-gradient px-8 py-3 rounded-lg font-semibold text-primary shadow-lg hover:shadow-xl transition-shadow"
         >
           Conócenos
